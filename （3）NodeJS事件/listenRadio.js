@@ -1,8 +1,17 @@
 var radio = require("./radio");
-var listenRadio = new radio.Radio("music radio","FM 106.7");
-function fun(){
-    listenRadio.play();
-    listenRadio.stop();
-}
+const util = require("util");
+const events = require("events");
+const EventEmitter = events.EventEmitter;
 
-listenRadio.on("listen",fun());
+util.inherits(radio.Radio,EventEmitter);
+var listenRadio = new radio.Radio("music radio","FM 106.7");
+
+
+listenRadio.on("play",listenRadio.play);
+listenRadio.on("stop",listenRadio.stop);
+
+ 
+listenRadio.emit("play");
+setTimeout(function() {
+    listenRadio.emit('stop');
+}, 2000); 
