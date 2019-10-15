@@ -26,7 +26,7 @@ http.createServer(function(req,res){
                     console.log("用户名、密码不正取");
                 }
                 
-            }
+            } 
         }) 
     })
 }).listen(8081);

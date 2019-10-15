@@ -54,9 +54,11 @@ http.createServer(function(req,res){
                     movieObj.movieRange=d.text();
                     // filmObj.movieId ="$(this).text()";
                     list.push(movieObj);
+                   
 
                 });
                 var listStr = JSON.stringify(list); 
+                console.log(listStr);
                 res.writeHead(200,{"Content-Type":"text/plain;charset=utf-8"});
                 res.write(listStr);
                 res.end();

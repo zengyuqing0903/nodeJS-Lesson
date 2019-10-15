@@ -40,8 +40,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
     $.get("http://localhost:8081/getlist",function(data){
-        var list = JSON.parse(data);        
-        console.log(list);
+        var list = JSON.parse(data);      
         for(var i = 0;i<list.length;i++){
             var liNOde = '<tr><td>'+list[i].movieId+
                 '</td><td>'+list[i].movieName+
