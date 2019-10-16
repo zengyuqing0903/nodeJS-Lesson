@@ -60,15 +60,28 @@ function uploadFile(req,res){
         for(var i = 0; i < bufArr.length; i++){
             imgData += bufArr[i];
         }
-        fs.writeFileSync("upload/file.png",imgData,{"encoding":"binary"});
+        var buf = Buffer.from(imgData,"binary")
+        var timer = (new Date().getTime());
+        fs.writeFileSync("upload/"+timer+".png",buf,{"encoding":"binary"});
         res.end("submit success")
     })
 }
 /**
- * 地址栏中发起http的请求
- * 超链接http
- * 提交表单
- * ajax发起请求
- * <script src=''>
- * <img src=''>
+ * 地址栏中发起http的请求 get请求
+ * 超链接http               get请求
+ * 提交表单                 get，post请求均可
+ * ajax发起请求      可以是get也可以是post
+ * <link href =""/> get请求
+ * <script src=''>  get请求
+ * <img src=''>     get请求
+ * 
+ * get请求，向服务传递的参数都在url里面呈现
+ * http://localhost：8081/detail?newId=1&newType=1
+ * var urlObj = url.parse(req.url,true);
+ * urlObj.query.newId
+ *  
+ * 
+ * post请求，数据存储在请求体里面,提交表单
+ * req.on("data",function(chunk){})
+ * req,on("end",function(){})
  */
